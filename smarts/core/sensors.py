@@ -48,6 +48,7 @@ from .masks import RenderMasks
 from .scenario import Mission, Via
 from .waypoints import Waypoint
 
+logger = logging.getLogger(__name__)
 
 class VehicleObservation(NamedTuple):
     id: str
@@ -291,6 +292,9 @@ class Sensors:
             sim, agent_id, vehicle, sensor_state
         )
 
+        if done and sensor_state.steps_completed == 1 and agent_id == 'Agent-007':
+            logger.warning(f"{agent_id} is done on the first step")
+
         return (
             Observation(
                 events=events,
@@ -359,6 +363,7 @@ class Sensors:
             wrong_way=is_wrong_way,
             not_moving=is_not_moving,
         )
+
         return done, events
 
     @classmethod
@@ -564,6 +569,10 @@ class SensorState:
     @property
     def mission_planner(self):
         return self._mission_planner
+
+    @property
+    def steps_completed(self):
+        return self._step
 
 
 class CameraSensor(Sensor):
