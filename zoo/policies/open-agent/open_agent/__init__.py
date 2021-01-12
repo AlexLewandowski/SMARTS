@@ -34,4 +34,4 @@ def entrypoint(
     )
 
 
-register(locator="open_agent-v0", entry_point=entrypoint)
+register(locator="open_agent-v0", entrypoint=entrypoint)

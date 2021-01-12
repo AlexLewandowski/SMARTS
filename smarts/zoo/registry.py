@@ -22,7 +22,7 @@ from smarts.core.utils.class_factory import ClassRegister
 agent_registry = ClassRegister()
 
 
-def register(locator: str, entry_point, **kwargs):
+def register(locator: str, entrypoint, **kwargs):
     """Register an AgentSpec with the zoo.
 
     In order to load a registered AgentSpec it needs to be reachable from a
@@ -31,7 +31,7 @@ def register(locator: str, entry_point, **kwargs):
     Args:
         locator:
             A string in the format of 'locator-name'
-        entry_point:
+        entrypoint:
             A callable that returns an AgentSpec or an AgentSpec object
 
     For example:
@@ -40,14 +40,14 @@ def register(locator: str, entry_point, **kwargs):
 
         register(
             locator="motion-planner-agent-v0",
-            entry_point=lambda **kwargs: AgentSpec(
+            entrypoint=lambda **kwargs: AgentSpec(
                 interface=AgentInterface(waypoints=True, action=ActionSpaceType.TargetPose),
                 agent_builder=MotionPlannerAgent,
             ),
         )
     """
 
-    agent_registry.register(locator=locator, entry_point=entry_point, **kwargs)
+    agent_registry.register(locator=locator, entrypoint=entrypoint, **kwargs)
 
 
 def make(locator: str, **kwargs):
