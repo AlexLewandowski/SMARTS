@@ -50,6 +50,7 @@ from .waypoints import Waypoint
 
 logger = logging.getLogger(__name__)
 
+
 class VehicleObservation(NamedTuple):
     id: str
     position: Tuple[float, float, float]
@@ -292,7 +293,11 @@ class Sensors:
             sim, agent_id, vehicle, sensor_state
         )
 
-        if done and sensor_state.steps_completed == 1 and agent_id == 'Agent-007':
+        if (
+            done
+            and sensor_state.steps_completed == 1
+            and agent_id in sim.agent_manager.ego_agent_ids
+        ):
             logger.warning(f"{agent_id} is done on the first step")
 
         return (

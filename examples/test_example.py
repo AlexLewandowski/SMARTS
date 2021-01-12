@@ -37,7 +37,7 @@ def main(scenarios, max_episode_steps=None):
 
     agent = agent_spec.build_agent()
 
-    #done occurs here under the hood
+    # done occurs here under the hood
     observations = env.reset()
     agent_obs = observations[AGENT_ID]
     agent_action = agent.act(agent_obs)
@@ -45,7 +45,7 @@ def main(scenarios, max_episode_steps=None):
     observations, rewards, dones, infos = env.step({AGENT_ID: agent_action})
 
     # use logger.warning() for giving warnings
-    
+
     # This passes because done happened in `reset()` and the `env.step()` is no longer concerned with the agent.
     assert not dones["__all__"]
 
@@ -60,6 +60,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(
-        scenarios=args.scenarios,
-        max_episode_steps=0,
+        scenarios=args.scenarios, max_episode_steps=0,
     )

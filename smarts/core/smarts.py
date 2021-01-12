@@ -184,7 +184,9 @@ class SMARTS(ShowBase):
     def check_if_acting_on_non_existing_agent(self, agent_actions, dones):
         for agent_id in agent_actions:
             if agent_id not in dones:
-                self._log.warning(f"Attempted giving action to an non-existing agent, {agent_id} ")
+                self._log.warning(
+                    f"Attempted giving action to an non-existing agent, {agent_id} "
+                )
 
     def _step(self, agent_actions):
         """Steps through the simulation while applying the given agent actions.
