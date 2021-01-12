@@ -44,7 +44,7 @@ class TrajectoryBoidAgent(Agent):
 
 register(
     locator="pose-boid-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(action=ActionSpaceType.TargetPose, waypoints=True),
         agent_builder=PoseBoidAgent,
     ),
@@ -52,7 +52,7 @@ register(
 
 register(
     locator="trajectory-boid-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(action=ActionSpaceType.Trajectory, waypoints=True),
         agent_builder=TrajectoryBoidAgent,
     ),

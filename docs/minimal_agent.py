@@ -13,7 +13,7 @@ class BasicAgent(Agent):
 
 register(
     locator="minimal",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(waypoints=True, action=ActionSpaceType.Lane),
         agent_builder=BasicAgent,
     ),

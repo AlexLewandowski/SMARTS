@@ -17,15 +17,15 @@ def demo_agent_callable(target_prefix=None, interface=None):
 
 register(
     locator="zoo-agent1-v0",
-    entrypoint="smarts.core.agent:AgentSpec",
+    entry_point="smarts.core.agent:AgentSpec",
     # Also works:
-    # entrypoint=smarts.core.agent.AgentSpec
+    # entry_point=smarts.core.agent.AgentSpec
     interface=AgentInterface.from_type(AgentType.Laner, max_episode_steps=20000),
 )
 
 register(
     locator="zoo-agent2-v0",
-    entrypoint=demo_agent_callable,
+    entry_point=demo_agent_callable,
     # Also works:
-    # entrypoint="scenarios.zoo_intersection:demo_agent_callable",
+    # entry_point="scenarios.zoo_intersection:demo_agent_callable",
 )

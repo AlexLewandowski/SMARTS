@@ -21,7 +21,7 @@ class MotionPlannerAgent(Agent):
 
 register(
     locator="zoo-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface.from_type(AgentType.Laner, max_episode_steps=20000),
         agent_builder=KeepLaneAgent,
     ),
@@ -29,7 +29,7 @@ register(
 
 register(
     locator="motion-planner-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(waypoints=True, action=ActionSpaceType.TargetPose),
         agent_builder=MotionPlannerAgent,
     ),

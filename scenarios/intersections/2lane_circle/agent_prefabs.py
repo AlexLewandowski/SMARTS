@@ -16,7 +16,7 @@ class StoppedAgent(Agent):
 
 register(
     locator="laner-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(
             waypoints=True, action=ActionSpaceType.Lane, max_episode_steps=5000
         ),
@@ -26,7 +26,7 @@ register(
 
 register(
     locator="buddha-agent-v0",
-    entrypoint=lambda **kwargs: AgentSpec(
+    entry_point=lambda **kwargs: AgentSpec(
         interface=AgentInterface(
             waypoints=True,
             action=ActionSpaceType.LaneWithContinuousSpeed,

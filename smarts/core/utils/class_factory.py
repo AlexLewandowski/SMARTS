@@ -82,13 +82,13 @@ class ClassRegister:
     def __init__(self):
         self.index = {}
 
-    def register(self, locator, entrypoint=None, **kwargs):
+    def register(self, locator, entry_point=None, **kwargs):
         # TODO: locator is being used for both module:name and just name. The former
         #       is the locator, and the latter is simply name. Update the signature of
         #       this method to be register(name, entrypoint, ...)
         name = locator
         if name not in self.index:
-            self.index[name] = ClassFactory(locator, entrypoint, **kwargs)
+            self.index[name] = ClassFactory(locator, entry_point, **kwargs)
 
     def find_factory(self, locator):
         self._raise_on_invalid_locator(locator)
