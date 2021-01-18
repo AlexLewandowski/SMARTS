@@ -137,7 +137,9 @@ class RemoteAgentBuffer:
             )
 
         # Instantiate and return a local RemoteAgent.
-        return RemoteAgent(zoo_manager_conn["address"], ("localhost", worker_port))
+        return RemoteAgent(
+            zoo_manager_conn["address"], (zoo_manager_conn["address"][0], worker_port)
+        )
 
     def _remote_agent_future(self):
         return self._replenish_threadpool.submit(
@@ -195,8 +197,6 @@ def get_manager_channel_stub(addr):
         # Wait until the grpc server is ready or timeout after 30 seconds
         grpc.channel_ready_future(channel).result(timeout=30)
     except grpc.FutureTimeoutError:
-        raise RemoteAgentException(
-            "Timeout in connecting to remote zoo manager."
-        ) from e
+        raise RemoteAgentException("Timeout in connecting to remote zoo manager.")
     stub = manager_pb2_grpc.ManagerStub(channel)
     return channel, stub

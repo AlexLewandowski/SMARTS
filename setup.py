@@ -25,22 +25,22 @@ setup(
         "panda3d",
         "panda3d-gltf",
         "numpy",
-        "shapely",
-        "networkx",
-        "trimesh",  # Used for writing .glb files
+        "rich",
         "rtree",  # Used by sumolib
-        "lz4",
         "filelock",
+        "lz4",
+        "networkx",
+        "opencv-python",
         "pandas",
         "psutil",
-        "opencv-python",
         "visdom",
         "pybullet",
         "sklearn",  # KDTree from sklearn is used by waypoints
         "tableprint",
+        "trimesh",  # Used for writing .glb files
         "pynput",  # Used by HumanKeyboardAgent
         "sh",
-        "rich",
+        "shapely",
         "supervisor",
         # HACK: There is a bug where if we only install the base ray dependency here
         #       and ray[rllib] under [train] it  prevents rllib from getting installed.
@@ -49,15 +49,10 @@ setup(
         "ray[rllib]==0.8.6",  # We use Ray for our multiprocessing needs
         # The following are for Scenario Studio
         "yattag",
-        # The following are for testing
-        "pytest",
-        "pytest-benchmark",
-        "pytest-xdist",
-        "pytest-cov",
         # The following are for /envision
+        "cloudpickle<1.4.0",
         "tornado",
         "websocket-client",
-        "cloudpickle<1.4.0",
         # The following are for the /smarts/algorithms
         "matplotlib",
         "scikit-image",
@@ -67,6 +62,14 @@ setup(
         "twisted",
     ],
     extras_require={
+        "test": [
+            # The following are for testing
+            "pytest",
+            "pytest-benchmark",
+            "pytest-cov",
+            "pytest-notebook",
+            "pytest-xdist",
+        ],
         "train": [
             "tensorflow==2.2.1",
             # XXX: TF requires specific version of scipy
